@@ -231,13 +231,13 @@ void afficherMurs(int rangees, int colonnes) {
                 printf("%c ", grille[i][j]);
                 couleur("0");
             } else if (grille[i][j] == 'r') {
-                printf("🐧");
+                printf("🐧 ");
             } else if (grille[i][j] == 'x') {
-                printf("🐶");
+                printf("🐶 ");
             } else if (grille[i][j] == 'y') {
-                printf("🐱");
+                printf("🐱 ");
             } else if (grille[i][j] == 'z') {
-                printf("🐴");
+                printf("🐴 ");
             } else if (grille[i][j] == '-') {
                 couleur("32");
                 printf("- ");
@@ -303,39 +303,46 @@ void afficherMurs(int rangees, int colonnes) {
      }
 
      int niveau;
-      printf("Quel niveau de difficulté souhaitez-vous ?\n");
-      printf("Entrez \n1 pour facile\n2 pour moyen\n3 pour difficile\n\nAllez-y :");
+      
 
-      res = scanf("%d", &niveau);
-      if (res != 1) { // Utiliser la variable res pour vérifier la validité de la saisie
-           printf("L'entrée n'est pas valide.\n");
-           printf("Veuillez réessayer.\n");
-           // Vider le buffer pour éviter une boucle infinie en cas d'entrée non valide
-           while (getchar() != '\n');
-           exit(EXIT_FAILURE);
-       }
-       switch (niveau) {
-           case 1:
-               printf("Très bien, allons-y pour le niveau facile\n");
-               creationMinuteur(40);
-               break;
-           case 2:
-               printf("Très bien, allons-y pour le niveau moyen\n");
-               creationMinuteur(30);
-               break;
-           case 3:
-               printf("Très bien, allons-y pour le niveau difficile\n");
-               printf("Grille avec les cibles et les robots :\n");
-               afficherMurs(rangees, colonnes);
-               creationMinuteur(20);
-               break;
-           default:
-               printf("L'entrée n'est pas valide.\n");
-               printf("Veuillez réessayer.\n");
-               // Vider le buffer pour éviter une boucle infinie en cas d'entrée non valide
-               while (getchar() != '\n');
-               exit(EXIT_FAILURE);
-       }
+
+     do {
+             printf("Quel niveau de difficulté souhaitez-vous ?\n");
+             printf("Entrez :\n1 pour facile\n2 pour moyen\n3 pour difficile\n\nVotre choix : ");
+
+             if ((res = scanf("%d", &niveau)) != 1) {
+                 printf("L'entrée n'est pas valide.\n");
+                 printf("Veuillez réessayer.\n");
+                 // Vider le buffer pour éviter une boucle infinie en cas d'entrée non valide
+                 while (getchar() != '\n');
+             } else {
+                 switch (niveau) {
+                     case 1:
+                         printf("Très bien, allons-y pour le niveau facile\n");
+                         creationMinuteur(40);
+                         break;
+                     case 2:
+                         printf("Très bien, allons-y pour le niveau moyen\n");
+                         creationMinuteur(30);
+                         break;
+                     case 3:
+                         printf("Très bien, allons-y pour le niveau difficile\n");
+                         printf("Grille avec les cibles et les robots :\n");
+                         afficherMurs(rangees, colonnes);
+                         creationMinuteur(20);
+                         break;
+                     default:
+                         printf("L'entrée n'est pas valide.\n");
+                         printf("Veuillez réessayer.\n");
+                         break;
+                 }
+             }
+         } while (niveau < 1 || niveau > 3 || res != 1);
+
+        
+
+
+
       printf("\033[H\033[J");
      int r = 0;
 
