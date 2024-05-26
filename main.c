@@ -317,17 +317,17 @@ void afficherMurs(int rangees, int colonnes) {
        switch (niveau) {
            case 1:
                printf("Très bien, allons-y pour le niveau facile\n");
-               creationMinuteur(15);
+               creationMinuteur(40);
                break;
            case 2:
                printf("Très bien, allons-y pour le niveau moyen\n");
-               creationMinuteur(10);
+               creationMinuteur(30);
                break;
            case 3:
                printf("Très bien, allons-y pour le niveau difficile\n");
                printf("Grille avec les cibles et les robots :\n");
                afficherMurs(rangees, colonnes);
-               creationMinuteur(5);
+               creationMinuteur(20);
                break;
            default:
                printf("L'entrée n'est pas valide.\n");
